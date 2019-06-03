@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Ache Profissionais</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Nome Sobrenome</string>
+    <string name="nav_header_subtitle">seuemail@email.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="txt_register_info">Se ainda não possuí um cadastro, somente forneça os dados abaixo para efetuar o acesso.</string>
+</resources>

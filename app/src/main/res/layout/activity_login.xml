@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".activity.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/login_txtUser"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/edit_round"
+            android:drawableStart="@drawable/ic_user"
+            android:hint="Usuário"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/login_txtPassword"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:background="@drawable/edit_round"
+            android:drawableStart="@drawable/ic_key"
+            android:hint="Senha"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:padding="10dp" />
+
+        <Button
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_round"
+            android:text="acessar"
+            android:onClick="access"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:textAlignment="center">
+
+        <TextView
+            android:id="@+id/login_textRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Deseja se cadastrar ?"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:onClick="goToRegister"/>
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
