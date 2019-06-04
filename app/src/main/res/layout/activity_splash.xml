@@ -7,12 +7,17 @@
     android:background="@color/colorPrimary"
     tools:context=".activity.SplashActivity">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textColor="@color/white"
-        android:textSize="40dp"
-        android:text="BEM VINDO"
-        android:gravity="center"/>
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/logo_splash_white" />
+
+    </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>
