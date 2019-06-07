@@ -9,6 +9,7 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
 import java.lang.reflect.Type;
+import java.util.Objects;
 
 public abstract class JsonUtils {
 
@@ -25,7 +26,7 @@ public abstract class JsonUtils {
             Gson gson = new Gson();
             JsonElement je = gson.toJsonTree(src);
             JsonObject jo = new JsonObject();
-            jo.add(src.getClass().getAnnotation(JsonRootName.class).value(), je);
+            jo.add(Objects.requireNonNull(src.getClass().getAnnotation(JsonRootName.class)).value(), je);
             return jo;
         }
     }

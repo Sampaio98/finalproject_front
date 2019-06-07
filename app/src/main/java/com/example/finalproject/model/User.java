@@ -1,14 +1,13 @@
 package com.example.finalproject.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonRootName;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @JsonRootName("user")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type")
 public class User implements Serializable {
 
     @SerializedName("id")
@@ -23,8 +22,9 @@ public class User implements Serializable {
     @SerializedName("email")
     private String email;
 
-    @SerializedName("dateInsertion")
-    private LocalDateTime dateInsertion;
+//    @SerializedName("dateInsertion")
+//    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+//    private LocalDateTime dateInsertion;
 
     @SerializedName("phone")
     private String phone;
@@ -70,13 +70,13 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public LocalDateTime getDateInsertion() {
-        return dateInsertion;
-    }
-
-    public void setDateInsertion(LocalDateTime dateInsertion) {
-        this.dateInsertion = dateInsertion;
-    }
+//    public LocalDateTime getDateInsertion() {
+//        return dateInsertion;
+//    }
+//
+//    public void setDateInsertion(LocalDateTime dateInsertion) {
+//        this.dateInsertion = dateInsertion;
+//    }
 
     public String getPhone() {
         return phone;

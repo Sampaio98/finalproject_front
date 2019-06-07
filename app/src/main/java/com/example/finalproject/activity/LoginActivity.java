@@ -3,6 +3,7 @@ package com.example.finalproject.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -14,7 +15,6 @@ import com.example.finalproject.model.User;
 
 import java.io.IOException;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -76,23 +76,24 @@ public class LoginActivity extends AppCompatActivity {
         Call<User> call = RetrofitClient
                 .getInstance()
                 .getApi()
-                .findById(1L);
+                .login(userLoginDTO);
 
         call.enqueue(new Callback<User>() {
 
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                if (response.isSuccessful()) {
+                if (response.code() == 200) {
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     finish();
-                    Toast.makeText(LoginActivity.this, "DEU BOM CARALHO", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Acessado com sucesso.", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(LoginActivity.this, "FAIL", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Usuário não encontrado.", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
+                Log.i("", t.getMessage(), t);
                 Toast.makeText(LoginActivity.this, "AIIII", Toast.LENGTH_SHORT).show();
             }
         });
