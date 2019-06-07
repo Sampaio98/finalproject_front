@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.finalproject.API.RetrofitClient;
@@ -22,17 +23,21 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText txtUser, txtPassword;
+    private RelativeLayout pbLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         txtUser = findViewById(R.id.login_txtUser);
         txtPassword = findViewById(R.id.login_txtPassword);
+        pbLogin = findViewById(R.id.pbLogin);
     }
 
     public void access(View view){
         if(validateLogin()) {
+            pbLogin.setVisibility(View.VISIBLE);
             login();
         }
     }
@@ -84,18 +89,22 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.code() == 200) {
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    pbLogin.setVisibility(View.INVISIBLE);
                     finish();
                     Toast.makeText(LoginActivity.this, "Acessado com sucesso.", Toast.LENGTH_SHORT).show();
                 } else {
+                    pbLogin.setVisibility(View.INVISIBLE);
                     Toast.makeText(LoginActivity.this, "Usuário não encontrado.", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
+                pbLogin.setVisibility(View.INVISIBLE);
                 Log.i("", t.getMessage(), t);
-                Toast.makeText(LoginActivity.this, "AIIII", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Erro ao acessar, tente mais tarde.", Toast.LENGTH_SHORT).show();
             }
+
         });
     }
 }
