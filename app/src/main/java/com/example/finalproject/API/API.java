@@ -1,13 +1,19 @@
 package com.example.finalproject.API;
 
+import com.example.finalproject.dto.UserLoginDTO;
 import com.example.finalproject.model.User;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface API {
 
-    @POST("/users/create")
-    Call<User> registerUser(@Body User user);
+    @POST("user/login")
+    Call<User> login(@Body UserLoginDTO userLoginDTO);
+
+    @GET("user/{id}")
+    Call<User> findById(@Path("id") Long id);
 }
