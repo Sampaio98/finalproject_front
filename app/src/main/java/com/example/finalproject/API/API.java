@@ -1,5 +1,6 @@
 package com.example.finalproject.API;
 
+import com.example.finalproject.dto.UserInsertDTO;
 import com.example.finalproject.dto.UserLoginDTO;
 import com.example.finalproject.model.User;
 
@@ -16,4 +17,7 @@ public interface API {
 
     @GET("user/{id}")
     Call<User> findById(@Path("id") Long id);
+
+    @POST("user")
+    Call<Void> createUser(@Body UserInsertDTO userInsertDTO);
 }

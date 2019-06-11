@@ -1,15 +1,13 @@
-package com.example.finalproject.model;
+package com.example.finalproject.dto;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.Objects;
 
-@JsonRootName("user")
-public class User implements Serializable {
-
-    @SerializedName("id")
-    private Long id;
+@JsonRootName("userInsertDTO")
+public class UserInsertDTO implements Serializable {
 
     @SerializedName("name")
     private String name;
@@ -20,10 +18,6 @@ public class User implements Serializable {
     @SerializedName("email")
     private String email;
 
-//    @SerializedName("dateInsertion")
-//    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
-//    private LocalDateTime dateInsertion;
-
     @SerializedName("phone")
     private String phone;
 
@@ -33,23 +27,15 @@ public class User implements Serializable {
     @SerializedName("password")
     private String password;
 
-    public User(){}
+    public UserInsertDTO(){}
 
-    public User(String name, String cpf, String email, String phone, String username, String password) {
+    public UserInsertDTO(String name, String cpf, String email, String phone, String username, String password) {
         this.name = name;
         this.cpf = cpf;
         this.email = email;
         this.phone = phone;
         this.username = username;
         this.password = password;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -76,14 +62,6 @@ public class User implements Serializable {
         this.email = email;
     }
 
-//    public LocalDateTime getDateInsertion() {
-//        return dateInsertion;
-//    }
-//
-//    public void setDateInsertion(LocalDateTime dateInsertion) {
-//        this.dateInsertion = dateInsertion;
-//    }
-
     public String getPhone() {
         return phone;
     }
@@ -106,5 +84,23 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserInsertDTO that = (UserInsertDTO) o;
+        return Objects.equals(name, that.name) &&
+                Objects.equals(cpf, that.cpf) &&
+                Objects.equals(email, that.email) &&
+                Objects.equals(phone, that.phone) &&
+                Objects.equals(username, that.username) &&
+                Objects.equals(password, that.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, cpf, email, phone, username, password);
     }
 }
